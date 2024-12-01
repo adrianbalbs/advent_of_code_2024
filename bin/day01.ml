@@ -2,7 +2,7 @@ open Advent_of_code_2024
 
 let input = Advent.read_lines "input.txt"
 
-let parse_lists input =
+let parse_lists (input : string list) : int list * int list =
   input
   |> List.filter_map (fun line ->
          match
@@ -13,7 +13,7 @@ let parse_lists input =
   |> List.split
 
 (* Part 1 *)
-let total_min_distance input =
+let total_min_distance (input : string list) : int =
   input |> parse_lists |> fun (list1, list2) ->
   List.combine (List.sort compare list1) (List.sort compare list2)
   |> List.fold_left (fun acc (a, b) -> acc + Int.abs (a - b)) 0
@@ -23,7 +23,7 @@ let () = input |> total_min_distance |> string_of_int |> print_endline
 (* Part 2 *)
 module IntMap = Map.Make (Int)
 
-let calculate_similarity input =
+let calculate_similarity (input : string list) : int =
   let get_freq map x = Option.value (IntMap.find_opt x map) ~default:0 in
   let count_freqs list =
     List.fold_left
