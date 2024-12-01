@@ -1,4 +1,4 @@
-(executable
- (public_name advent_of_code_2024)
- (name main)
+(executables
+ (public_names advent_of_code_2024 day01)
+ (names main day01)
  (libraries advent_of_code_2024))
